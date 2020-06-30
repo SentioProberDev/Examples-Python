@@ -8,4 +8,6 @@
 * Open the Assets Combobox and download the \*.tar.gz archive (i.e. sentio_prober_control-0.1.3.tar.gz)
 
 3.) Install the SentioProberControl python bindings for SENTIO probe stations
- 
+You can install the package with pip from a terminal:
+
+```python -m pip install sentio_prober_control-0.1.3.tar.gz```
