@@ -1,10 +1,7 @@
 # SentioProberControl - Samples
- Python bindings for controlling MPI SENTIO probe stations
+![](https://www.mpi-corporation.com/wp-content/uploads/2019/12/1.-TS3500-SE-with-WaferWallet_frontview.jpg)
+
+Sample scripts for controlling MPI SENTIO probe stations with Python. 
+ The [Python bindings for SentioProberControl](https://github.com/SentioProberDev/SentioProberControl/releases/) are required for executing the sample scripts.
  
- The samples require the SentioProberControl package in order to run:
- * https://github.com/beltoforion/SentioProberControl
-
-You can install SentioProberControl module via pip from git by executing the following command:
-
- ```python -m pip install https://github.com/beltoforion/SentioProberControl/blob/master/dist/sentio_prober_control-0.1.0.tar.gz```
  
