@@ -1,10 +1,9 @@
 import os
 import random
 
-from Mpi.Communication.CommunicatorGpib import CommunicatorGpib
-from Mpi.Devices.Enumerations import GpibCardVendor
-from Mpi.Sentio.ProberSentio import *
-from Mpi.Communication.CommunicatorTcpIp import CommunicatorTcpIp
+from sentio_prober_control.Communication.CommunicatorGpib import CommunicatorGpib
+from sentio_prober_control.Sentio.ProberSentio import *
+from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
 
 
 def main():
