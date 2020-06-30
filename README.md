@@ -1,5 +1,5 @@
-[![GitHub issues](https://img.shields.io/github/issues/SentioProberDev/SentioProberControlSamples.svg?maxAge=360)](https://github.com/SentioProberDev/SentioProberControlSamples/issues)
 <!--
+[![GitHub issues](https://img.shields.io/github/issues/SentioProberDev/SentioProberControlSamples.svg?maxAge=360)](https://github.com/SentioProberDev/SentioProberControlSamples/issues)
 [![Version](https://img.shields.io/github/release/SentioProberDev
 SentioProberControlSamples .svg?maxAge=360)](https://github.com/beltoforion/Magnetic-Pendulum/releases/tag/v1.3)
 [![Github All Releases](https://img.shields.io/github/downloads/beltoforion/Magnetic-Pendulum/total.svg)](https://github.com/beltoforion/Magnetic-Pendulum/releases/tag/v1.3)
