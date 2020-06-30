@@ -23,4 +23,4 @@ Set up a recangular wafermap remotely
 3.) Install the SentioProberControl python bindings for SENTIO probe stations
 You can install the package with pip from a terminal by typing the following command:
 
-```python -m pip install sentio_prober_control-0.1.3.tar.gz```
+```python -m pip install sentio_prober_control-0.1.5.tar.gz```
