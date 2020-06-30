@@ -6,6 +6,14 @@ SentioProberControlSamples .svg?maxAge=360)](https://github.com/beltoforion/Magn
 -->
 # SentioProberControl - Samples
 
+## Table of Contents
+
+### [map_setup.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_setup.py)
+Set up a round wafermap remotely
+
+### [map_setup_rect.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_setup_rect.py)
+Set up a recangular wafermap remotely
+
 ## Instructions
 1.) Download or clone the SentioProberControlSamples repository
 
