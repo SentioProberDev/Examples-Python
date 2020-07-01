@@ -1,7 +1,7 @@
-from Mpi.Sentio.ProberSentio import *
-from Mpi.Communication.CommunicatorBase import CommunicatorBase
-from Mpi.Communication.CommunicatorGpib import *
-from Mpi.Communication.CommunicatorTcpIp import *
+from sentio_prober_control.Sentio.ProberSentio import *
+from sentio_prober_control.Communication.CommunicatorBase import CommunicatorBase
+from sentio_prober_control.Communication.CommunicatorGpib import *
+from sentio_prober_control.Communication.CommunicatorTcpIp import *
 
 
 def main():
