@@ -14,6 +14,9 @@ Set up a round wafermap remotely
 ### [map_setup_rect.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_setup_rect.py)
 Set up a recangular wafermap remotely
 
+### [map_stepping.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_setup_rect.py)
+Basic stepping over a wafermap without subsites
+
 ## Instructions
 1.) Download or clone the SentioProberControlSamples repository
 
