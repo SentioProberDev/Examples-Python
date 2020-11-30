@@ -29,4 +29,4 @@ Direct sending of low level remote commands via TCP/IP or GPIB (ADLINK)
 3.) Install the SentioProberControl python bindings for SENTIO probe stations
 You can install the package with pip from a terminal by typing the following command:
 
-```python -m pip install sentio_prober_control-0.1.5.tar.gz```
+```python -m pip install --user sentio_prober_control-1.0.0.tar.gz```
