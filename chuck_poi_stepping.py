@@ -52,9 +52,6 @@ def set_poi(prober):
     sx, sy = prober.map.get_index_size()
     print("Die size is {0}, {1} µm".format(sx, sy))
 
-    die_center_x = sx / 2
-    die_center_y = sy / 2
-
     # IMPORTANT:
     # The POI MUST be inside of the Die! If you set up POI at the edge of the wafer you may experience undefined
     # behavior! 
@@ -64,8 +61,12 @@ def set_poi(prober):
     #   - Sentio is using the chuck position to determine the current die. If the chuck is closer than 1 µm to a die edge
     #     SENTIO may incorrectly determine that it is in the neighboring die due to limited chuck accuracy!
     #   - In this example I avoid the trouble by assuming the die is slightly smaller than it really is.
-    sx = sx - 4  # 2 µm on the sides of the die are the poi "no go" zone
-    sy = sy - 4  # 2 µm on the sides of the die are the poi "no go" zone
+    edge_margin = 4
+    sx -= edge_margin  # 2 µm on the sides of the die are the poi "no go" zone
+    sy -= edge_margin  # 2 µm on the sides of the die are the poi "no go" zone
+
+    die_center_x = sx / 2
+    die_center_y = sy / 2
 
     # Create this many rows and columns of POI.
     ncols = 3
