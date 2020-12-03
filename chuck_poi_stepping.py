@@ -52,23 +52,22 @@ def set_poi(prober):
     sx, sy = prober.map.get_index_size()
     print("Die size is {0}, {1} µm".format(sx, sy))
 
-    # IMPORTANT:
-    # The POI MUST be inside of the Die! If you set up POI at the edge of the wafer you may experience undefined
-    # behavior! Here is why:
-    #   - If you place a poi on a die edge it cannot be assigned to a specific die because its
-    #     position is ambiguous!
-    #   - The chuck can be positioned only with +/- 1-2 µm accuracy. This are has to be avoided when setting poi's!
-    #   - Sentio is using the chuck position to determine the current die. If the chuck is closer than 1 µm to a die edge
-    #     SENTIO may incorrectly determin it is in the neighboring die due to limited chuck accuracy!
-    #   - I avoid the entire trouble by assuming the die is slightly smaller than it really is.
-    sx = sx - 4  # 2 µm on the sides of the die are the poi "no go" zone
-    sy = sy - 4  # 2 µm on the sides of the die are the poi "no go" zone
-
     die_center_x = sx / 2
     die_center_y = sy / 2
 
-    # Create this many rows and columns of POI. You can change the number is you like but
-    # use an odd number!
+    # IMPORTANT:
+    # The POI MUST be inside of the Die! If you set up POI at the edge of the wafer you may experience undefined
+    # behavior! 
+    #   - If you place a poi on a die edge it cannot be assigned to a specific die because its
+    #     position is ambiguous.
+    #   - The chuck can be positioned with +/- 1..2 microns accuracy. This area should be avoided when setting poi!
+    #   - Sentio is using the chuck position to determine the current die. If the chuck is closer than 1 µm to a die edge
+    #     SENTIO may incorrectly determine that it is in the neighboring die due to limited chuck accuracy!
+    #   - In this example I avoid the trouble by assuming the die is slightly smaller than it really is.
+    sx = sx - 4  # 2 µm on the sides of the die are the poi "no go" zone
+    sy = sy - 4  # 2 µm on the sides of the die are the poi "no go" zone
+
+    # Create this many rows and columns of POI.
     ncols = 3
     nrows = 3
 
@@ -106,12 +105,11 @@ def main():
         num_poi = prober.map.poi.get_num()
         prober.map.step_first_die()
 
-        selected_poi = [ 'poi_1', 'poi_5', 'poi_9']
         while True:
             # Variant 1: Step over all POI (comment Variant 2 to us this)
             selected_poi = range(0, num_poi)
 
-            # Variant 2: Step over all POI
+            # Variant 2: Step over a selection of POI
             selected_poi = [ 'poi_1', 'poi_5', 'poi_9']
 
             # Do the poi stepping
