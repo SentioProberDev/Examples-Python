@@ -97,6 +97,8 @@ def main():
         check_preconditions(prober)
         set_poi(prober)
 
+        prober.select_module(Module.Wafermap)
+
         # Stepping loop:
         # - Step over all active dies. For each die step over all poi
         # - for this example we will NOT go into contact!
