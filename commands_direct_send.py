@@ -7,10 +7,10 @@ def main():
 
     try:
         comm = CommunicatorGpib(GpibCardVendor.Adlink)
-        comm.connect("GPIB0:20")
+        comm.connect("GPIB0:22")
 
-#        comm = CommunicatorTcpIp()
-#        comm.connect("127.0.0.1:35555")
+        #comm = CommunicatorTcpIp()
+        #comm.connect("127.0.0.1:35555")
 
         # You can use the communicator to send any command
         comm.send("*IDN?")
