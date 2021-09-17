@@ -1,6 +1,6 @@
-from sentio_prober_control.Communication.CommunicatorGpib import CommunicatorGpib
 from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
+from sentio_prober_control.Communication.CommunicatorGpib import *
+from sentio_prober_control.Communication.CommunicatorTcpIp import *
 
 
 def main():
@@ -43,36 +43,35 @@ def main():
         prober.map.path.select_dies(TestSelection.All)
         prober.map.path.set_routing(RoutingStartPoint.UpperRight, RoutingPriority.ColBiDir)
 
-        # do the stepping
-        crs = prober.map.step_first_die()
-        print("Position {0}, {1} (Site: {2})".format(crs[0], crs[1], crs[2]))
-
-        bin_value = 3
-
         #
         # Stepping Version 1: Use the EndOfRoutException as the abort criteria
         #
 
-#        try:
-#            while True:
-#                crs = prober.map.bin_step_next_die(bin_value)
-#                # crs = prober.step_next_die()
-#                print("Position {0}, {1} (Site: {2})".format(crs[0], crs[1], crs[2]))
-#        except ProberException as e:
-#            print(e.message())
+        prober.map.step_first_die()
+        bin_value = 0
+
+        try:
+            while True:
+                col, row, site = prober.map.bin_step_next_die(bin_value)
+                print(f'Position {col}, {row} (Site: {site})')
+        except ProberException as e:
+            if e.error() != RemoteCommandError.EndOfRoute:
+                raise
 
         #
         # Stepping Version 2: Manually check end of route
         #
 
+        prober.map.step_first_die()
+        bin_value = 1
+
         while True:
             if not prober.map.end_of_route():
-                crs = prober.map.bin_step_next_die(bin_value)
-                #crs = prober.map.step_next_die()
-                print("Position {0}, {1} (Site: {2})".format(crs[0], crs[1], crs[2]))
+                col, row, site = prober.map.bin_step_next_die(bin_value)
+                print(f'Position {col}, {row} (Site: {site})')
             else:
-                prober.map.bins.set_bin(bin_value, crs[0], crs[1])
-                print("Last Die {0}, {1} (Site: {2})".format(crs[0], crs[1], crs[2]))
+                prober.map.bins.set_bin(bin_value, col, row)
+                print(f'Last Die {col}, {row} (Site: {site})')
                 break
 
     except Exception as e:
