@@ -4,6 +4,7 @@ from sentio_prober_control.Sentio.Enumerations import *
 
 #-------------------------------------------------------#
 # Example for SiPH Probe with Stepping
+# 2 positioners application
 #-------------------------------------------------------#
 def main():
     # Prepare communication
@@ -39,9 +40,9 @@ def main():
     prober.move_chuck_home()
     prober.move_chuck_contact()
 
-    prober.siph.move_siph_hover('East')
-    prober.siph.move_siph_hover('West')
-    prober.siph.siph_fast_alignment()
+    prober.siph.move_hover(ProbeSentio.East)
+    prober.siph.move_hover(ProbeSentio.West)
+    prober.siph.fast_alignment()
 
     prober.map.step_first_die()
 
@@ -51,8 +52,8 @@ def main():
 
         prober.move_chuck_contact()
 
-        prober.siph.move_siph_hover('East')
-        prober.siph.move_siph_hover('West')
+        prober.siph.move_hover(ProbeSentio.East)
+        prober.siph.move_hover(ProbeSentio.West)
 
         prober.siph.gradient_search()
 
@@ -63,7 +64,7 @@ def main():
         prober.siph.move_separation(ProbeSentio.East)
         prober.siph.move_separation(ProbeSentio.West)
 
-        prober.map.move_next_die()
+        prober.map.step_next_die()
 
         # 13-3. ProbeSubsite_nextdie
         for j in range(1, len(subsiteListEastX) + 1):
@@ -73,8 +74,8 @@ def main():
                                        subsiteListWestY[j])
             prober.move_chuck_contact()
 
-            prober.siph.move_siph_hover('East')
-            prober.siph.move_siph_hover('West')
+            prober.siph.move_hover(ProbeSentio.East)
+            prober.siph.move_hover(ProbeSentio.West)
 
             prober.siph.gradient_search()
 
