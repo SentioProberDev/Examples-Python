@@ -1,3 +1,4 @@
+from operator import truediv
 import time
 
 from sentio_prober_control.Sentio.ProberSentio import *
@@ -11,14 +12,26 @@ def main():
         #        prober = SentioProber(CommunicatorGpib.create(GpibCardVendor.Adlink, "GPIB0:20"))
         prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
         prober.initialize_if_needed()
-
+        
         # Use Sentios mechanism for sending remote commands directly
+        # Start first command
         resp: Response = prober.send_cmd("start_async_cmd")
-        cmd_id: int = resp.cmd_id()
+        cmd_id1: int = resp.cmd_id()
 
-        # There are two ways to ways to wait for asynchronous commands:
-        # First way, use blocking wait_complete call. (Second parameter is the timeout)
-        prober.wait_complete(cmd_id, 60)
+        # Start second command
+        resp = prober.send_cmd("start_async_cmd")
+        cmd_id2 = resp.cmd_id()
+
+        #
+        # Her you can do other stuff whilst the commands are executing
+        #
+
+        # Method 1:
+        # Wait for all commands to finish
+        prober.wait_all(180)
+        # alternatively wait for each of the commands:
+        #prober.wait_complete(cmd_id1, 60)
+        #prober.wait_complete(cmd_id2, 60)
 
         # Second way use query_command_status for polling:
         #while True:
