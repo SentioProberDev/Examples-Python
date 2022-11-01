@@ -11,7 +11,7 @@ SentioProberControlSamples .svg?maxAge=360)](https://github.com/beltoforion/Magn
 We recommend using Visual Studio Code for the development of Python code. Visual Studio Code is a free IDE with python support. You can download it from here: https://code.visualstudio.com/. Please make sure to also install the Python extensions. Visual Studio Code will prompt you for their installation when you open a
 python project for the first time.
 
-To use the SENTIO Python examples you need to first download and install the current version of the SENTIO bindings for Python form:
+To use the SENTIO Python examples you need to first download and install the current version of the SENTIO bindings for Python from:
 
 https://github.com/SentioProberDev/SentioProberControl/releases
 
