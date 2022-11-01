@@ -8,20 +8,17 @@ SentioProberControlSamples .svg?maxAge=360)](https://github.com/beltoforion/Magn
 
 ## Prerequisites
 
-We recommand using Visual Studio Code for the development of Python code. Visual Studio Code is a free IDE with python support.
-https://code.visualstudio.com/
-
-Please make sure to also install the Python extensions. Visual Studio Code will prompt you for their installation when you open a
+We recommand using Visual Studio Code for the development of Python code. Visual Studio Code is a free IDE with python support. You can download it from here: https://code.visualstudio.com/. Please make sure to also install the Python extensions. Visual Studio Code will prompt you for their installation when you open a
 python project for the first time.
 
-## Downloading the SENTIO Python samples
-1.) Download or clone the SentioProberControlSamples repository
+To use the SENTIO Python examples you need to first download and install the current version of the SENTIO bindings for Python form:
 
-2.) Download the latest version of the [Python bindings for SENTIO](https://github.com/SentioProberDev/SentioProberControl/releases/)
-* Open the Assets Combobox and download the \*.tar.gz archive (i.e. sentio_prober_control-3.5.2.tar.gz)
+https://github.com/SentioProberDev/SentioProberControl/releases
 
-3.) Install the SentioProberControl python bindings for SENTIO probe stations
-You can install the package with pip from a terminal by typing the following command:
+Then install the python package with pip:
+```python -m pip install --user sentio-prober-control-3.6.1.tar.gz```
+
+Please note that pip will automatically uninstall an older version of the sentio_prober_control repository, if one is found.
 
 ## Table of Contents
 
@@ -36,5 +33,3 @@ Basic stepping over a wafermap without subsites
 
 ### [commands_direct_send.py](https://github.com/SentioProberDev/Examples-Python/blob/master/commands_direct_send.py)
 Direct sending of low level remote commands via TCP/IP or GPIB (ADLINK)
-
-```python -m pip install --user sentio-prober-control-3.5.2.tar.gz```
