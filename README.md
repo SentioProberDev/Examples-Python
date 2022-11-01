@@ -14,6 +14,15 @@ https://code.visualstudio.com/
 Please make sure to also install the Python extensions. Visual Studio Code will prompt you for their installation when you open a
 python project for the first time.
 
+## Downloading the SENTIO Python samples
+1.) Download or clone the SentioProberControlSamples repository
+
+2.) Download the latest version of the [Python bindings for SENTIO](https://github.com/SentioProberDev/SentioProberControl/releases/)
+* Open the Assets Combobox and download the \*.tar.gz archive (i.e. sentio_prober_control-3.5.2.tar.gz)
+
+3.) Install the SentioProberControl python bindings for SENTIO probe stations
+You can install the package with pip from a terminal by typing the following command:
+
 ## Table of Contents
 
 ### [map_setup.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_setup.py)
@@ -27,14 +36,5 @@ Basic stepping over a wafermap without subsites
 
 ### [commands_direct_send.py](https://github.com/SentioProberDev/Examples-Python/blob/master/commands_direct_send.py)
 Direct sending of low level remote commands via TCP/IP or GPIB (ADLINK)
-
-## Instructions
-1.) Download or clone the SentioProberControlSamples repository
-
-2.) Download the latest version of the [Python bindings for SENTIO](https://github.com/SentioProberDev/SentioProberControl/releases/)
-* Open the Assets Combobox and download the \*.tar.gz archive (i.e. sentio_prober_control-3.5.2.tar.gz)
-
-3.) Install the SentioProberControl python bindings for SENTIO probe stations
-You can install the package with pip from a terminal by typing the following command:
 
 ```python -m pip install --user sentio-prober-control-3.5.2.tar.gz```
