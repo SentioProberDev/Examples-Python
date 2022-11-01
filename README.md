@@ -6,6 +6,10 @@ SentioProberControlSamples .svg?maxAge=360)](https://github.com/beltoforion/Magn
 -->
 # SentioProberControl - Samples
 
+## Prerequisites
+
+We recommand using Visual Studio Code for the development of new Python code.
+
 ## Table of Contents
 
 ### [map_setup.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_setup.py)
