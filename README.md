@@ -8,7 +8,11 @@ SentioProberControlSamples .svg?maxAge=360)](https://github.com/beltoforion/Magn
 
 ## Prerequisites
 
-We recommand using Visual Studio Code for the development of new Python code.
+We recommand using Visual Studio Code for the development of Python code. Visual Studio Code is a free IDE with python support.
+https://code.visualstudio.com/
+
+Please make sure to also install the Python extensions. Visual Studio Code will prompt you for their installation when you open a
+python project for the first time.
 
 ## Table of Contents
 
