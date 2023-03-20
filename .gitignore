@@ -1,1 +1,4 @@
 .idea/*
+.vs/SentioProberControlSamples/v17/.wsuo
+*.sqlite
+.vs/VSWorkspaceState.json
