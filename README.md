@@ -8,17 +8,13 @@ SentioProberControlSamples .svg?maxAge=360)](https://github.com/beltoforion/Magn
 
 ## Prerequisites
 
-We recommend using Visual Studio Code for the development of Python code. Visual Studio Code is a free IDE with python support. You can download it from here: https://code.visualstudio.com/. Please make sure to also install the Python extensions. Visual Studio Code will prompt you for their installation when you open a
-python project for the first time.
+We recommend using Visual Studio Code for the development of Python code. Visual Studio Code is a free IDE with python support. You can download it from here: https://code.visualstudio.com/. Please make sure to also install the Python extensions. Visual Studio Code will prompt you for their installation when you open a python project for the first time.
 
-To use the SENTIO Python examples you need to first download and install the current version of the SENTIO bindings for Python from:
+## Getting the samples to work
 
-https://github.com/SentioProberDev/SentioProberControl/releases
-
-Then install the python package with pip:
-```python -m pip install --user sentio-prober-control-3.6.1.tar.gz```
-
-Please note that pip will automatically uninstall an older version of the sentio_prober_control repository, if one is found.
+* Download or Clone this Archive
+* Install Required Python Packages: ```pip install -r requirements.txt```
+* Select and start a python file
 
 ## Table of Contents
 
