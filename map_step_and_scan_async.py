@@ -24,7 +24,6 @@ def main():
         prep_stat_cmd_id = resp.cmd_id()
 
         try:
-            pass
             crs = prober.map.step_first_die()
             print("Position {0}, {1} (Site: {2})".format(crs[0], crs[1], crs[2]))
 

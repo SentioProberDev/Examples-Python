@@ -45,17 +45,16 @@ def main():
                 map.die.remove(i, -10)
 
         # read map data
-        print("Wafermap diameter: {0} mm".format(map.get_diameter()))
-        print("Grid axis orientation: {0}".format(map.get_axis_orient()))
-        print("Grid origin: {0}".format(map.get_grid_origin()))
-        print("Index size: {0}".format(map.get_index_size()))
-        print("Street Size: {0}".format(map.get_street_size()))
-        print("present dies: {0}".format(map.get_num_dies(DieNumber.Present)))
-        print("Selected dies: {0}".format(map.get_num_dies(DieNumber.Selected)))
-
+        print(f"Wafermap diameter: {map.get_diameter()} mm")
+        print(f"Grid axis orientation: {map.get_axis_orient()}")
+        print(f"Grid origin: {map.get_grid_origin()}")
+        print(f"Index size: {map.get_index_size()}")
+        print(f"Street Size: {map.get_street_size()}")
+        print(f"present dies: {map.get_num_dies(DieNumber.Present)}")
+        print(f"Selected dies: {map.get_num_dies(DieNumber.Selected)}")
     except Exception as e:
         print("\n#### Error ##################################")
-        print("{0}".format(e))
+        print(f"{e}")
 
 if __name__ == "__main__":
     main()
