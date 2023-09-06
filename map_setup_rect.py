@@ -1,16 +1,11 @@
-from sentio_prober_control.Communication.CommunicatorGpib import CommunicatorGpib
 from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
 
 
 def main():
 
     try:
-        #       Setup GPIB Communication
-#        prober = SentioProber(CommunicatorGpib.create(GpibCardVendor.Adlink, "GPIB0:20"))
-
-        #       Setup TCPIP Communication
-        prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
+        # create the prober object
+        prober = SentioProber.create_prober("tcpip" , "127.0.0.1:35555")
 
         prober.select_module(Module.Wafermap)
 
@@ -33,6 +28,7 @@ def main():
         map.die.remove(0,rows-1)
         map.die.remove(cols-1, rows-1)
 
+        prober.local_mode()
     except Exception as e:
         print("\n#### Error ##################################")
         print("{0}".format(e))

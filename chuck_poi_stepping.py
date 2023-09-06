@@ -1,5 +1,4 @@
 from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
 
 #
 # This example will demonstrate how to navigate the chuck with a point of interest list (POI)
@@ -92,7 +91,7 @@ def set_poi(prober):
 def main():
 
     try:
-        prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
+        prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
 
         check_preconditions(prober)
         set_poi(prober)
@@ -123,10 +122,13 @@ def main():
             prober.map.step_next_die()
             if prober.map.end_of_route():
                 break
+        
+        prober.local_mode()
 
     except Exception as e:
         print("\n#### Error ##################################")
         print("{0}".format(e))
+        prober.local_mode()
 
 
 if __name__ == "__main__":

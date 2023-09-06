@@ -1,16 +1,10 @@
 from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Communication.CommunicatorGpib import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import *
 
 
 def main():
 
     try:
-        #       Setup GPIB Communication
-#        prober = SentioProber(CommunicatorGpib.create(GpibCardVendor.Adlink, "GPIB0:20"))
-
-        #       Setup TCPIP Communication
-        prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
+        prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
 
         x, y, z, t = prober.move_chuck_site(ChuckSite.Wafer)
         print("absolute chuck position is x={0}; y={1}; z={2}; theta={3}°".format(x, y, z, t))
@@ -22,8 +16,6 @@ def main():
 
         if not hasContact:
             raise Exception("Contact must be set for stepping!")
-
-
 
         prober.select_module(Module.Wafermap)
 
@@ -42,6 +34,22 @@ def main():
 
         prober.map.path.select_dies(TestSelection.All)
         prober.map.path.set_routing(RoutingStartPoint.UpperRight, RoutingPriority.ColBiDir)
+
+        # remove 4 dies in the center
+        prober.map.die.remove(0,0)
+        prober.map.die.remove(-1,0)
+        prober.map.die.remove(-1,-1)        
+        prober.map.die.remove(0,-1)  
+
+        # add die on top of the wafer to the map and the test path
+        prober.map.die.add(-3, 5)
+        prober.map.die.select(-3, 5)
+
+        # unselect the last column of dies
+        prober.map.die.unselect(-6, 1)
+        prober.map.die.unselect(-6, 0)
+        prober.map.die.unselect(-6, -1)
+        prober.map.die.unselect(-6, -2)
 
         #
         # Stepping Version 1: Use the EndOfRoutException as the abort criteria
@@ -73,6 +81,8 @@ def main():
                 prober.map.bins.set_bin(bin_value, col, row)
                 print(f'Last Die {col}, {row} (Site: {site})')
                 break
+        
+        prober.local_mode()
 
     except Exception as e:
         print("\n#### Error ##################################")
