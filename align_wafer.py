@@ -3,6 +3,8 @@ import os
 from sentio_prober_control.Sentio.ProberSentio import *
 from sentio_prober_control.Communication.CommunicatorGpib import *
 from sentio_prober_control.Communication.CommunicatorTcpIp import *
+from sentio_prober_control.Sentio.Enumerations import *
+
 
 def main():
 

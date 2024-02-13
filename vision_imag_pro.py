@@ -1,11 +1,9 @@
 from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
+from sentio_prober_control.Sentio.Enumerations import IMagProZReference
 
 
 def main():
-
-        #       Setup TCPIP Communication
-        prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
+        prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
 
         # Zero reference test
         prober.vision.imagpro.move_z(IMagProZReference.Center, 0)

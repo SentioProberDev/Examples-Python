@@ -1,17 +1,11 @@
-from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
-from sentio_prober_control.Communication.CommunicatorGpib import CommunicatorGpib
+from sentio_prober_control.Sentio.ProberSentio import SentioProber
+from sentio_prober_control.Sentio.Enumerations import Module, AxisOrient, ColorScheme, TestSelection, BinSelection, DieNumber
 
 
 def main():
 
     try:
-
-        #       Setup GPIB Communication
-#        prober = SentioProber(CommunicatorGpib.create(GpibCardVendor.Adlink, "GPIB0:20"))
-
-        #       Setup TCPIP Communication
-        prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
+        prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
 
         prober.select_module(Module.Wafermap)
 

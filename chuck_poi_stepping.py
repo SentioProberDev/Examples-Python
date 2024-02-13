@@ -1,4 +1,5 @@
 from sentio_prober_control.Sentio.ProberSentio import *
+from sentio_prober_control.Sentio.Enumerations import *
 from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
 
 #

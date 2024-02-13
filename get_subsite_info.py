@@ -16,7 +16,7 @@ def main():
 #       Setup TCPIP Communication
         prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
 
-        num = prober.map.subsites.get_num();
+        num = prober.map.subsites.get_num()
         print("Number of subsites: {0}".format(num))
 
         for i in range(0, num):

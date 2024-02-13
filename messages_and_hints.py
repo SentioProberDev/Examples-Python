@@ -1,6 +1,7 @@
 import time
 
 from sentio_prober_control.Sentio.ProberSentio import *
+from sentio_prober_control.Sentio.Enumerations import RemoteCommandError
 from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
 
 
