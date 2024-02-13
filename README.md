@@ -26,7 +26,7 @@ Set up a round wafermap remotely
 Set up a recangular wafermap remotely
 
 ### [map_stepping.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_stepping.py)
-Basic stepping over a wafermap without subsites
+This example demonstrates basic stepping over a wafermap without subsites
 
 ### [commands_direct_send.py](https://github.com/SentioProberDev/Examples-Python/blob/master/commands_direct_send.py)
 Direct sending of low level remote commands via TCP/IP or GPIB (ADLINK)
