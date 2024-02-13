@@ -30,3 +30,6 @@ This example demonstrates basic stepping over a wafermap without subsites
 
 ### [commands_direct_send.py](https://github.com/SentioProberDev/Examples-Python/blob/master/commands_direct_send.py)
 Direct sending of low level remote commands via TCP/IP or GPIB (ADLINK)
+
+### [vision_camera_settings.py](https://github.com/SentioProberDev/Examples-Python/blob/master/vision_camera_settings.py)
+This script shows how to set and change basic camera parameters.
