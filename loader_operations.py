@@ -1,65 +1,52 @@
-from sentio_prober_control.Communication.CommunicatorGpib import CommunicatorGpib
-from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
+from sentio_prober_control.Sentio.ProberSentio import SentioProber
+from sentio_prober_control.Sentio.Enumerations import LoaderStation, OrientationMarker
 
 
-def main():
+def main() -> None:
+    prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
 
-    try:
-        #       Setup GPIB Communication
-#        prober = SentioProber(CommunicatorGpib.create(GpibCardVendor.Adlink, "GPIB0:20"))
+    #
+    # Check whether a loader station exists
+    #
 
-        #       Setup TCPIP Communication
-        prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
+    stat = prober.loader.has_station(LoaderStation.WaferWallet)
+    if stat:
+        print("Station has a Wafer Wallet")
 
-        #
-        # Check whether a loader station exists
-        #
+    stat = prober.loader.has_station(LoaderStation.Cassette1)
+    if stat:
+        print("Station has a Cassette Station 1")
 
-        stat = prober.loader.has_station(LoaderStation.WaferWallet)
-        if stat:
-            print("Station has a Wafer Wallet")
+    stat = prober.loader.has_station(LoaderStation.Cassette2)
+    if stat:
+        print("Station has a Cassette Station 2")
 
-        stat = prober.loader.has_station(LoaderStation.Cassette1)
-        if stat:
-            print("Station has a Cassette Station 1")
+    #
+    # Scan the content of a loader station
+    #
 
-        stat = prober.loader.has_station(LoaderStation.Cassette2)
-        if stat:
-            print("Station has a Cassette Station 2")
+    slots = prober.loader.scan_station(LoaderStation.Cassette1)
+    first_occupied_slot = None
+    for i in range(0, len(slots)):
+        if (slots[i]=='0'):
+            print(f"Slot {i + 1}: Empty")
+        elif (slots[i]=='1'):
+            print(f"Slot {i + 1}: Occupied")
+            if (first_occupied_slot is None):
+                first_occupied_slot = i
+        else:
+            print(f"Slot {i + 1}: ERROR")
 
-        #
-        # Scan the content of a loader station
-        #
+    #
+    # Move a wafer from the Cassette to the prealigner
+    #
 
-        slots = prober.loader.scan_station(LoaderStation.Cassette1)
-        first_occupied_slot = None
-        for i in range(0, len(slots)):
-            if (slots[i]=='0'):
-                print("Slot {0}: Empty".format(i+1))
-            elif (slots[i]=='1'):
-                print("Slot {0}: Occupied".format(i + 1))
-                if (first_occupied_slot is None):
-                    first_occupied_slot = i
-            else:
-                print("Slot {0}: ERROR".format(i + 1))
+    if (not first_occupied_slot is None):
+        # mind you: slots are 1 based!
+        prober.loader.transfer_wafer(LoaderStation.Cassette1, first_occupied_slot + 1, LoaderStation.PreAligner, 1)
 
-        #
-        # Move a wafer from the Cassette to the prealigner
-        #
-
-        if (not first_occupied_slot is None):
-            # mind you: slots are 1 based!
-            prober.loader.transfer_wafer(LoaderStation.Cassette1, first_occupied_slot + 1, LoaderStation.PreAligner, 1)
-
-            # prealign the wafer
-            prober.loader.prealign(OrientationMarker.Notch, 180)
-
-
-
-    except Exception as e:
-        print("\n#### Error ##################################")
-        print("{0}".format(e))
+        # prealign the wafer
+        prober.loader.prealign(OrientationMarker.Notch, 180)
 
 
 if __name__ == "__main__":

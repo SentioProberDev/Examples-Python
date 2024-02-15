@@ -2,7 +2,7 @@ from sentio_prober_control.Sentio.ProberSentio import SentioProber
 from sentio_prober_control.Sentio.Enumerations import Module, AxisOrient, ColorScheme, TestSelection, BinSelection
 
 
-def main():
+def main() -> None:
     prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
 #        prober = SentioProber.create_prober("gpib", GpibCardVendor.Adlink, "GPIB0:20")
 
@@ -29,8 +29,4 @@ def main():
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        print("\n#### Error ##################################")
-        print(f"{e}")
+    main()

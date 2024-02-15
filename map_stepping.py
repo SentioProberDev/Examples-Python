@@ -38,7 +38,7 @@ def main():
         prober.map.set_axis_orient(AxisOrient.UpRight)
         prober.map.set_color_scheme(ColorScheme.ColorFromBin)
 
-        prober.map.bins.load("C:\ProgramData\MPI Corporation\Sentio\config\defaults\default_bins.xbt")
+        prober.map.bins.load("C:\\ProgramData\\MPI Corporation\\Sentio\\config\\defaults\\default_bins.xbt")
         prober.map.bins.clear_all()
 
         prober.map.path.select_dies(TestSelection.All)

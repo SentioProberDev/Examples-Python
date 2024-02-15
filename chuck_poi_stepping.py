@@ -1,6 +1,5 @@
-from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Sentio.Enumerations import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
+from sentio_prober_control.Sentio.ProberSentio import SentioProber
+from sentio_prober_control.Sentio.Enumerations import ChuckSite, Stage, PoiReferenceXy, Module, TestSelection, RoutingStartPoint, RoutingPriority
 
 #
 # This example will demonstrate how to navigate the chuck with a point of interest list (POI)
@@ -13,21 +12,21 @@ from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTc
 #    - You need a system with a motorized chuck
 #    - a chuck home position must be set
 #
-def check_preconditions(prober):
+def check_preconditions(prober : SentioProber) -> None:
     # 1.) Check whether the machine has a motorized chuck.
-    if (not prober.has_chuck_xyz()):
+    if not prober.has_chuck_xyz():
         raise Exception("This script requires a motorized chuck in order to run!")
 
     # 2.) Check whether the home position of the chuck wafer site is set
     hasHome, hasContact, overtravelActive, vacuumOn = prober.get_chuck_site_status(ChuckSite.Wafer)
-    if (not hasHome):
+    if not hasHome:
         raise Exception("Home position must be set to execute this script!")
 
     # 3.) Check whether the die reference position is set.
     # This script requires a valid die reference position. The die reference position is the distance from the corner
     # of the die to the pad. Only when it is set can SENTIO know where the pad is located inside the die.
-    if (not prober.map.die_reference_is_set()):
-        raise Exception("The die reference position is not trained! Sentio cannot know where the home position is located inside the die exactly!")
+    if not prober.map.die_reference_is_set():
+        raise Exception("The die reference position is not trained! Therefore SENTIO does know where the home position is located inside the die!")
 
 #
 # Distribute 9 POI across the die. The POI layout will look like shown here:
@@ -48,10 +47,10 @@ def check_preconditions(prober):
 #
 # - Numbers indicate the POI index and their position.
 # - POI number 5 is at the center of the die
-def set_poi(prober):
+def set_poi(prober : SentioProber) -> None:
     # 1.) get the die Size
     sx, sy = prober.map.get_index_size()
-    print("Die size is {0}, {1} µm".format(sx, sy))
+    print(f"Die size is {sx}, {sy} µm")
 
     # IMPORTANT:
     # The POI MUST be inside of the Die! If you set up POI at the edge of the wafer you may experience undefined
@@ -76,7 +75,7 @@ def set_poi(prober):
     dx = sx / (ncols-1)
     dy = sy / (nrows-1)
 
-    print("Creating {0} points of interest:".format(ncols * nrows))
+    print(f"Creating {ncols * nrows} points of interest:")
 
     # Set up a poi map for the chuck which i using the die center as a reference position
     prober.map.poi.reset(Stage.Chuck, PoiReferenceXy.DieCenter)
@@ -87,47 +86,42 @@ def set_poi(prober):
             ct = ct + 1
             poi_x = die_center_x + c * dx
             poi_y = die_center_y + r * dy
-            print("Poi {0} at {1}, {2} µm".format(ct, poi_x, poi_y))
-            prober.map.poi.add(poi_x, poi_y, "poi_{0}".format(ct))
+            print(f"Poi {ct} at {poi_x}, {poi_y} µm")
+            prober.map.poi.add(poi_x, poi_y, f"poi_{ct}")
 
-def main():
 
-    try:
-        prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
+def main() -> None:
+    prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
 
-        check_preconditions(prober)
-        set_poi(prober)
+    check_preconditions(prober)
+    set_poi(prober)
 
-        prober.select_module(Module.Wafermap)
+    prober.select_module(Module.Wafermap)
 
-        # Stepping loop:
-        # - Step over all active dies. For each die step over all poi
-        # - for this example we will NOT go into contact!
-        prober.map.path.select_dies(TestSelection.All)
-        prober.map.path.set_routing(RoutingStartPoint.UpperRight, RoutingPriority.ColBiDir)
+    # Stepping loop:
+    # - Step over all active dies. For each die step over all poi
+    # - for this example we will NOT go into contact!
+    prober.map.path.select_dies(TestSelection.All)
+    prober.map.path.set_routing(RoutingStartPoint.UpperRight, RoutingPriority.ColBiDir)
 
-        num_poi = prober.map.poi.get_num()
-        prober.map.step_first_die()
+    num_poi = prober.map.poi.get_num()
+    prober.map.step_first_die()
 
-        while True:
-            # Variant 1: Step over all POI (comment Variant 2 to us this)
-            selected_poi = range(0, num_poi)
+    while True:
+        # Variant 1: Step over all POI (comment Variant 2 to us this)
+        selected_poi : range | list[str] = range(0, num_poi)
 
-            # Variant 2: Step over a selection of POI
-            selected_poi = [ 'poi_1', 'poi_5', 'poi_9']
+        # Variant 2: Step over a selection of POI
+        selected_poi = [ 'poi_1', 'poi_5', 'poi_9']
 
-            # Do the poi stepping
-            for i in selected_poi:
-                prober.map.poi.step(i)
+        # Do the poi stepping
+        for i in selected_poi:
+            prober.map.poi.step(i)
 
-            # Step to the next die
-            prober.map.step_next_die()
-            if prober.map.end_of_route():
-                break
-
-    except Exception as e:
-        print("\n#### Error ##################################")
-        print("{0}".format(e))
+        # Step to the next die
+        prober.map.step_next_die()
+        if prober.map.end_of_route():
+            break
 
 
 if __name__ == "__main__":

@@ -1,52 +1,43 @@
 import os
 
-from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Communication.CommunicatorGpib import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import *
-from sentio_prober_control.Sentio.Enumerations import *
+from sentio_prober_control.Sentio.ProberSentio import SentioProber
+from sentio_prober_control.Sentio.Enumerations import Module, AutoFocusCmd, AutoAlignCmd, ChuckSite
 
 
 def main():
+    prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
+    prober.select_module(Module.Wafermap)
 
-    try:
-#        prober = SentioProber(CommunicatorGpib.create(GpibCardVendor.Adlink, "GPIB0:20"))
-        prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
-        prober.select_module(Module.Wafermap)
+    # open a project
+    # - must have contact height set
+    # - must have a home position set
+    # - align_wafer must be set up properly
+    # - focus height should be set in the project
 
-        # open a project
-        # - must have contact height set
-        # - must have a home position set
-        # - align_wafer must be set up properly
-        # - focus height should be set in the project
+    project = os.path.dirname(os.path.abspath(__file__)) + "\\projects\\sample_align"
+    prober.open_project(project)
+    prober.select_module(Module.Vision)
 
-        project = os.path.dirname(os.path.abspath(__file__)) + "\projects\sample_align"
-        prober.open_project(project)
-        prober.select_module(Module.Vision)
+    x, y = prober.move_chuck_home()
+    print(f"Chuck at home position (x={x}, y={y} um)")
 
-        x, y = prober.move_chuck_home()
-        print("Chuck at home position (x={0}, y={1} um)".format(x, y))
+    z = prober.move_chuck_separation()
+    print(f"Chuck at separation (z={z} um)")
 
-        z = prober.move_chuck_separation()
-        print("Chuck at separation (z={0} um)".format(z))
+    # bring scope down to the old focus height. This is probably close to focus,
+    # but may not exactly be the focus height
+    prober.vision.auto_focus(AutoFocusCmd.GoTo)
 
-        # bring scope down to the old focus height. This is probably close to focus,
-        # but not exactly the focus height
-        prober.vision.auto_focus(AutoFocusCmd.GoTo)
+    # Do an autofocus. This will perform a focus scan and determine the best focus position
+    prober.vision.auto_focus(AutoFocusCmd.Focus)
 
-        # Do an autofocus to nail the focus height
-        prober.vision.auto_focus(AutoFocusCmd.Focus)
+    # perform wafer alignment
+    prober.vision.align_wafer(AutoAlignCmd.AutoDieSize)
 
-        # perform wafer alignment
-        prober.vision.align_wafer()
+    home, contact, overtravel, vacuum = prober.get_chuck_site_status(ChuckSite.Wafer)
 
-        home, contact, overtravel, vacuum = prober.get_chuck_site_status(ChuckSite.Wafer)
-
-        t = prober.get_chuck_theta(ChuckSite.Wafer)
-        print("Chuck alignment angle is {0} Deg".format(t))
-
-    except ProberException as e:
-        print("\n#### Error ##################################")
-        print("{0}".format(e.message()))
+    t = prober.get_chuck_theta(ChuckSite.Wafer)
+    print(f"Chuck alignment angle is {t} Deg")
 
 
 if __name__ == "__main__":
