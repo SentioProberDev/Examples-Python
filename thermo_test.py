@@ -52,43 +52,41 @@ def main() -> None:
     check_preconditions(prober)
 
     # SENTIO demo mode starts with a wafer on the chuck remove this wafer to the cassette 1
-    if prober.loader.query_wafer_status(LoaderStation.Chuck, 1) is not None:
-        prober.loader.transfer_wafer(LoaderStation.Chuck, 1, LoaderStation.Cassette1, 13)
+    #if prober.loader.query_wafer_status(LoaderStation.Chuck, 1) is not None:
+    #    prober.loader.transfer_wafer(LoaderStation.Chuck, 1, LoaderStation.Cassette1, 13)
 
     # Scan the station
-    originStation : LoaderStation = LoaderStation.Cassette1
-    prober.loader.scan_station(LoaderStation.Cassette1)
+    originStation : LoaderStation = LoaderStation.WaferWallet
+    prober.loader.scan_station(originStation)
 
     # Set up a list of wafers for processing
     wafer_list : List[Tuple[LoaderStation, int]] = []
-    wafer_list.append((originStation, 1))
-    wafer_list.append((originStation, 2))
-    wafer_list.append((originStation, 3))
-    wafer_list.append((originStation, 4))
     wafer_list.append((originStation, 5))
-    wafer_list.append((originStation, 6))
-    wafer_list.append((originStation, 7))
-    wafer_list.append((originStation, 8))
-    wafer_list.append((originStation, 9))
-    wafer_list.append((originStation, 10))
-    wafer_list.append((originStation, 11))
-    wafer_list.append((originStation, 12))
-    wafer_list.append((originStation, 13))
-    wafer_list.append((originStation, 14))
-    wafer_list.append((originStation, 15))
+    wafer_list.append((originStation, 5))
+#    wafer_list.append((originStation, 2))
+#    wafer_list.append((originStation, 3))
+#    wafer_list.append((originStation, 4))
+#    wafer_list.append((originStation, 5))
+#    wafer_list.append((originStation, 6))
+#    wafer_list.append((originStation, 7))
+#    wafer_list.append((originStation, 8))
+#    wafer_list.append((originStation, 9))
+#    wafer_list.append((originStation, 10))
+#    wafer_list.append((originStation, 11))
+#    wafer_list.append((originStation, 12))
+#    wafer_list.append((originStation, 13))
+#    wafer_list.append((originStation, 14))
+#    wafer_list.append((originStation, 15))
     wafer_list = filter_nonexisting(prober, wafer_list)
 
-    prober.open_project("thermo_test")
-    prober.select_module(Module.Wafermap)
+    prober.open_project("handling_test")
     
-    prealigner_angle = 90
-
     # Iterate over all wafers.
     for wafer_origin in wafer_list:
         station, slot = wafer_origin
         print(f"Processing wafer at {station} {slot}")
 
-        prober.loader.load_wafer(station, slot, prealigner_angle)
+        prober.loader.load_wafer(station, slot)
 #        prober.vision.align_wafer(AutoAlignCmd.UpdateDieSize)
 #        prober.vision.find_home()
         resp = prober.vision.start_fast_track()
