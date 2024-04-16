@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--QAlibria Calibration Project, please don't change it.-->
+<QAlibria QalibriaVersion="23.0.6">
+  <ProbeConfiguration Location="StraightWeProbeConfig">
+    <Probe Dir="North" ProbeModel="" PortMapping0="0" PortMapping1="0" PortMapping2="0" SerialNumber="" />
+    <Probe Dir="East" ProbeModel="U-100-GSG" PortMapping0="0" PortMapping1="2" PortMapping2="0" SerialNumber="" />
+    <Probe Dir="West" ProbeModel="U-100-GSG" PortMapping0="0" PortMapping1="1" PortMapping2="0" SerialNumber="" />
+    <Probe Dir="South" ProbeModel="" PortMapping0="0" PortMapping1="0" PortMapping2="0" SerialNumber="" />
+    <Probe Dir="NorthEast" ProbeModel="" PortMapping0="0" PortMapping1="0" PortMapping2="0" SerialNumber="" />
+    <Probe Dir="NorthWest" ProbeModel="" PortMapping0="0" PortMapping1="0" PortMapping2="0" SerialNumber="" />
+    <Probe Dir="SouthEast" ProbeModel="" PortMapping0="0" PortMapping1="0" PortMapping2="0" SerialNumber="" />
+    <Probe Dir="SouthWest" ProbeModel="" PortMapping0="0" PortMapping1="0" PortMapping2="0" SerialNumber="" />
+  </ProbeConfiguration>
+  <SubstrateConfiguration Model="Mask4mm" HomeStandard="0701" Rotation="0" Id="ATV_DEMO">
+  </SubstrateConfiguration>
+  <CalibrationProperties CalTier="First" CalMethod="SOLT" ETsID="" Zo="50" SendETsToFile="False" SendETsToVNA="True" ETsFileName="CalSetNameQ" RefImpedanceZline="FiftyOhm" OpenType="Standard">
+    <ReferencePlane Plane="ProbeTip" Position="-225" />
+    <ReflectInfo Offset="0">
+      <Reflect Type="Open" ID="" />
+    </ReflectInfo>
+    <StandardSequence>
+      <StandardSeq Type="Thru" ID="0103" />
+      <StandardSeq Type="Open" ID="0101" />
+      <StandardSeq Type="Short" ID="0122" />
+      <StandardSeq Type="Load" ID="0102" />
+    </StandardSequence>
+    <Stimulus StartFreq="250.000M" StopFreq="40.000G" PointFreq="0" IFBW="0" SweepType="Linear" Power="0" Correction="Raw" Average="0" SegmentNum="1" />
+    <SplitMethod IsEnabled="False" SplitFreq="40.000G" LowBandMethod="SOLT" HighBandMethod="SOLT" />
+  </CalibrationProperties>
+  <CalKit NorminalCapacitancePerUintLengthPfCm="1.492" NominalCharacteristicImpedanceAtGhz="50" EffectiveDielectricConstantAtGhzRealPart="4.94" EffectivePropagationVelocityAtGhz="0.45" ReferenceLossDb="0.34" ReferenceDelayPs="25.5" ReferenceFrequencyGhz="20">
+    <StandardCalKit Standard="Open" ID="0101" R="0" LineLength="0" ElectricalLengthOfLine="0" Offset="-1" />
+    <StandardCalKit Standard="Short" ID="0122" R="0" LineLength="0" ElectricalLengthOfLine="0" Offset="-1" />
+    <StandardCalKit Standard="Load" ID="0102" R="50" LineLength="0" ElectricalLengthOfLine="0" Offset="-1" />
+    <StandardCalKit Standard="Thru" ID="0103" R="0" LineLength="500" ElectricalLengthOfLine="3.33564095198152" Offset="-1" />
+    <StandardCalKit Standard="Line1" ID="0222" R="0" LineLength="2500" ElectricalLengthOfLine="18.1607118496772" Offset="-1" />
+    <StandardCalKit Standard="Line2" ID="0322" R="0" LineLength="4000" ElectricalLengthOfLine="29.2795150229489" Offset="-1" />
+    <StandardCalKit Standard="Line3" ID="0422" R="0" LineLength="6000" ElectricalLengthOfLine="44.1045859206446" Offset="-1" />
+    <ProbeCalKit Dir="North" AirC0="0" AirC1="0" AirC2="0" AirC3="0" CeramicC0="0" CeramicC1="0" CeramicC2="0" CeramicC3="0" OpenC0="0" OpenC1="0" OpenC2="0" OpenC3="0" ShortL0="0" ShortL1="0" ShortL2="0" ShortL3="0" LoadL0="0" LoadL1="0" LoadL2="0" LoadL3="0" />
+    <ProbeCalKit Dir="East" AirC0="0" AirC1="0" AirC2="0" AirC3="0" CeramicC0="0" CeramicC1="0" CeramicC2="0" CeramicC3="0" OpenC0="0" OpenC1="0" OpenC2="0" OpenC3="0" ShortL0="0" ShortL1="0" ShortL2="0" ShortL3="0" LoadL0="0" LoadL1="0" LoadL2="0" LoadL3="0" />
+    <ProbeCalKit Dir="West" AirC0="0" AirC1="0" AirC2="0" AirC3="0" CeramicC0="0" CeramicC1="0" CeramicC2="0" CeramicC3="0" OpenC0="0" OpenC1="0" OpenC2="0" OpenC3="0" ShortL0="0" ShortL1="0" ShortL2="0" ShortL3="0" LoadL0="0" LoadL1="0" LoadL2="0" LoadL3="0" />
+    <ProbeCalKit Dir="South" AirC0="0" AirC1="0" AirC2="0" AirC3="0" CeramicC0="0" CeramicC1="0" CeramicC2="0" CeramicC3="0" OpenC0="0" OpenC1="0" OpenC2="0" OpenC3="0" ShortL0="0" ShortL1="0" ShortL2="0" ShortL3="0" LoadL0="0" LoadL1="0" LoadL2="0" LoadL3="0" />
+    <ProbeCalKit Dir="NorthEast" AirC0="0" AirC1="0" AirC2="0" AirC3="0" CeramicC0="0" CeramicC1="0" CeramicC2="0" CeramicC3="0" OpenC0="0" OpenC1="0" OpenC2="0" OpenC3="0" ShortL0="0" ShortL1="0" ShortL2="0" ShortL3="0" LoadL0="0" LoadL1="0" LoadL2="0" LoadL3="0" />
+    <ProbeCalKit Dir="NorthWest" AirC0="0" AirC1="0" AirC2="0" AirC3="0" CeramicC0="0" CeramicC1="0" CeramicC2="0" CeramicC3="0" OpenC0="0" OpenC1="0" OpenC2="0" OpenC3="0" ShortL0="0" ShortL1="0" ShortL2="0" ShortL3="0" LoadL0="0" LoadL1="0" LoadL2="0" LoadL3="0" />
+    <ProbeCalKit Dir="SouthEast" AirC0="0" AirC1="0" AirC2="0" AirC3="0" CeramicC0="0" CeramicC1="0" CeramicC2="0" CeramicC3="0" OpenC0="0" OpenC1="0" OpenC2="0" OpenC3="0" ShortL0="0" ShortL1="0" ShortL2="0" ShortL3="0" LoadL0="0" LoadL1="0" LoadL2="0" LoadL3="0" />
+    <ProbeCalKit Dir="SouthWest" AirC0="0" AirC1="0" AirC2="0" AirC3="0" CeramicC0="0" CeramicC1="0" CeramicC2="0" CeramicC3="0" OpenC0="0" OpenC1="0" OpenC2="0" OpenC3="0" ShortL0="0" ShortL1="0" ShortL2="0" ShortL3="0" LoadL0="0" LoadL1="0" LoadL2="0" LoadL3="0" />
+  </CalKit>
+  <RawData>
+    <!--Freq(GHz) [1   fwd   S11   S21   rev   1   S12   S22]-->
+    <!--   0      [1    2     3     4     5    6    7     8 ]-->
+  </RawData>
+  <Repeatability UseDiffFreq="False" StartFreq="250.000M" StopFreq="40.000G" PointFreq="10" Cycle="2" Delay="1000" />
+  <Verification OpenType="Standard">
+    <VerificationCase Type="Repeatability" IsEnabled="False" Description="Repeatability" StandardType="Thru" RefStandardType="Thru" VerificationType="Difference" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="5.000G" MaxStartValue="0.02" MaxStopValue="0.02" MinStartValue="-0.02" MinStopValue="-0.02" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Open Magnitude" StandardType="Open" RefStandardType="Open" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="5" MaxStopValue="0" MinStartValue="-10" MinStopValue="-30" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Short Magnitude" StandardType="Short" RefStandardType="Short" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="5" MaxStopValue="0" MinStartValue="-10" MinStopValue="-30" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Short vs. Open" StandardType="Short" RefStandardType="Open" VerificationType="Difference" TraceType="Reflection" BoundaryType="Phase" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="190" MaxStopValue="190" MinStartValue="90" MinStopValue="90" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Match(Load)" StandardType="Load" RefStandardType="Load" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="-10" MaxStopValue="-10" MinStartValue="-80" MinStopValue="-80" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Thru/Line Reflection" StandardType="Thru" RefStandardType="Thru" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="-10" MaxStopValue="-10" MinStartValue="-80" MinStopValue="-80" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Thru/Line Transmission" StandardType="Thru" RefStandardType="Thru" VerificationType="Absolute" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="5" MaxStopValue="0" MinStartValue="-10" MinStopValue="-20" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Thru/Line Reflection" StandardType="Line1" RefStandardType="Line1" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="-10" MaxStopValue="-10" MinStartValue="-80" MinStopValue="-80" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Thru/Line Transmission" StandardType="Line1" RefStandardType="Line1" VerificationType="Absolute" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="5" MaxStopValue="0" MinStartValue="-10" MinStopValue="-20" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Thru/Line Reflection" StandardType="Line2" RefStandardType="Line2" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="-10" MaxStopValue="-10" MinStartValue="-80" MinStopValue="-80" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Thru/Line Transmission" StandardType="Line2" RefStandardType="Line2" VerificationType="Absolute" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="5" MaxStopValue="0" MinStartValue="-10" MinStopValue="-20" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Thru/Line Reflection" StandardType="Line3" RefStandardType="Line3" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="-10" MaxStopValue="-10" MinStartValue="-80" MinStopValue="-80" />
+    </VerificationCase>
+    <VerificationCase Type="RawData" IsEnabled="False" Description="Thru/Line Transmission" StandardType="Line3" RefStandardType="Line3" VerificationType="Absolute" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="5" MaxStopValue="0" MinStartValue="-10" MinStopValue="-20" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Model Phase, Degree" StandardType="Open" RefStandardType="Open" VerificationType="Difference" TraceType="Reflection" BoundaryType="Phase" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="2" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Model Magnitude, dB" StandardType="Open" RefStandardType="Open" VerificationType="Difference" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="0.1" MinStartValue="-0.1" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Difference Reflection Magnitude, dB" StandardType="Open" RefStandardType="Open" VerificationType="Difference" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="TMR,TMRR,NISTmTRL,mTRL,TRL,skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="0.1" MinStartValue="-0.1" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Absolute Reflection Magnitude, dB" StandardType="Open" RefStandardType="Open" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="TMR,TMRR,NISTmTRL,mTRL,TRL,skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="0.1" MinStartValue="-0.1" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Difference Reflection Phase, Degree" StandardType="Open" RefStandardType="Open" VerificationType="Difference" TraceType="Reflection" BoundaryType="Phase" UseForMethods="TMR,TMRR,NISTmTRL,mTRL,TRL,skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="2" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Absolute Reflection Phase, Degree" StandardType="Open" RefStandardType="Open" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Phase" UseForMethods="TMR,TMRR,NISTmTRL,mTRL,TRL,skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.2" MaxStopValue="-2" MinStartValue="-0.5" MinStopValue="-7" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Model Phase, Degree" StandardType="Short" RefStandardType="Short" VerificationType="Difference" TraceType="Reflection" BoundaryType="Phase" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="2" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Model Magnitude, dB" StandardType="Short" RefStandardType="Short" VerificationType="Difference" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="0.1" MinStartValue="-0.1" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Difference Reflection Magnitude, dB" StandardType="Short" RefStandardType="Short" VerificationType="Difference" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="TMR,TMRR,NISTmTRL,mTRL,TRL,skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="0.1" MinStartValue="-0.1" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Absolute Reflection Magnitude, dB" StandardType="Short" RefStandardType="Short" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="TMR,TMRR,NISTmTRL,mTRL,TRL,skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="0.1" MinStartValue="-0.1" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Difference Reflection Phase, Degree" StandardType="Short" RefStandardType="Short" VerificationType="Difference" TraceType="Reflection" BoundaryType="Phase" UseForMethods="TMR,TMRR,NISTmTRL,mTRL,TRL,skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="2" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Absolute Reflection Phase, Degree" StandardType="Short" RefStandardType="Short" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Phase" UseForMethods="TMR,TMRR,NISTmTRL,mTRL,TRL,skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="180.2" MaxStopValue="179.8" MinStartValue="179.8" MinStopValue="173" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Model Phase, Degree" StandardType="Load" RefStandardType="Load" VerificationType="Difference" TraceType="Reflection" BoundaryType="Phase" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="10" MaxStopValue="20" MinStartValue="-10" MinStopValue="-20" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Model Magnitude, dB" StandardType="Load" RefStandardType="Load" VerificationType="Difference" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="10" MaxStopValue="10" MinStartValue="-10" MinStopValue="-10" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Difference Reflection Magnitude, dB" StandardType="Load" RefStandardType="Load" VerificationType="Difference" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="0.1" MinStartValue="-0.1" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Absolute Reflection Magnitude, dB" StandardType="Load" RefStandardType="Load" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Magnitude" UseForMethods="skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="10" MaxStopValue="10" MinStartValue="-10" MinStopValue="-10" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Difference Reflection Phase, Degree" StandardType="Load" RefStandardType="Load" VerificationType="Difference" TraceType="Reflection" BoundaryType="Phase" UseForMethods="skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="2" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Absolute Reflection Phase, Degree" StandardType="Load" RefStandardType="Load" VerificationType="Absolute" TraceType="Reflection" BoundaryType="Phase" UseForMethods="skLRRM">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="10" MaxStopValue="20" MinStartValue="-10" MinStopValue="-20" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Difference Transmission Magnitude, dB" StandardType="Thru" RefStandardType="Thru" VerificationType="Difference" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="SOLR">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="0.1" MinStartValue="-0.1" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Absolute Transmission Magnitude, dB" StandardType="Thru" RefStandardType="Thru" VerificationType="Absolute" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="SOLR">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="0.1" MinStartValue="-0.1" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Difference Transmission Phase, Degree" StandardType="Thru" RefStandardType="Thru" VerificationType="Difference" TraceType="Transmission" BoundaryType="Phase" UseForMethods="SOLR">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.1" MaxStopValue="2" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Absolute Transmission Phase, Degree" StandardType="Thru" RefStandardType="Thru" VerificationType="Absolute" TraceType="Transmission" BoundaryType="Phase" UseForMethods="SOLR">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.2" MaxStopValue="-2" MinStartValue="-0.5" MinStopValue="-7" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Transmission Model Phase, Degree" StandardType="Thru" RefStandardType="Thru" VerificationType="Difference" TraceType="Transmission" BoundaryType="Phase" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.2" MaxStopValue="0.2" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Transmission Model Magnitude, dB" StandardType="Thru" RefStandardType="Thru" VerificationType="Difference" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.05" MaxStopValue="0.1" MinStartValue="-0.05" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Transmission Model Phase, Degree" StandardType="Line1" RefStandardType="Line1" VerificationType="Difference" TraceType="Transmission" BoundaryType="Phase" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.2" MaxStopValue="0.5" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Transmission Model Magnitude, dB" StandardType="Line1" RefStandardType="Line1" VerificationType="Difference" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.05" MaxStopValue="0.1" MinStartValue="-0.05" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Transmission Model Phase, Degree" StandardType="Line2" RefStandardType="Line2" VerificationType="Difference" TraceType="Transmission" BoundaryType="Phase" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.2" MaxStopValue="0.8" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Transmission Model Magnitude, dB" StandardType="Line2" RefStandardType="Line2" VerificationType="Difference" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.05" MaxStopValue="0.1" MinStartValue="-0.05" MinStopValue="-0.1" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Transmission Model Phase, Degree" StandardType="Line3" RefStandardType="Line3" VerificationType="Difference" TraceType="Transmission" BoundaryType="Phase" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.2" MaxStopValue="0.8" MinStartValue="-0.2" MinStopValue="-0.2" />
+    </VerificationCase>
+    <VerificationCase Type="Calibration" IsEnabled="False" Description="Transmission Model Magnitude, dB" StandardType="Line3" RefStandardType="Line3" VerificationType="Difference" TraceType="Transmission" BoundaryType="Magnitude" UseForMethods="">
+      <Boundary StartFrequency="250.000M" StopFrequency="20.000G" MaxStartValue="0.05" MaxStopValue="0.1" MinStartValue="-0.05" MinStopValue="-0.1" />
+    </VerificationCase>
+  </Verification>
+  <GoldenStandardList>
+    <GoldenStandard Standard="Open" Id="0101" IsEnabled="False" />
+    <GoldenStandard Standard="Short" Id="0122" IsEnabled="False" />
+    <GoldenStandard Standard="Load" Id="0102" IsEnabled="False" />
+    <GoldenStandard Standard="Thru" Id="0103" IsEnabled="False" />
+    <GoldenStandard Standard="Line1" Id="0222" IsEnabled="False" />
+    <GoldenStandard Standard="Line2" Id="0322" IsEnabled="False" />
+    <GoldenStandard Standard="Line3" Id="0422" IsEnabled="False" />
+  </GoldenStandardList>
+</QAlibria>

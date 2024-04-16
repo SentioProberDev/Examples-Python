@@ -1,6 +1,6 @@
 from typing import List, Tuple
 from sentio_prober_control.Sentio.ProberSentio import SentioProber
-from sentio_prober_control.Sentio.Enumerations import LoaderStation, Module, RemoteCommandError, AutoAlignCmd
+from sentio_prober_control.Sentio.Enumerations import LoaderStation, Module, RemoteCommandError, ChuckSite, AutoAlignCmd
 from sentio_prober_control.Sentio.ProberBase import ProberException
 
 
@@ -79,7 +79,11 @@ def main() -> None:
 #    wafer_list.append((originStation, 15))
     wafer_list = filter_nonexisting(prober, wafer_list)
 
-    prober.open_project("handling_test")
+    restoreContactHeights : bool = True
+    prober.open_project("handling_test", restoreContactHeights)
+    hasHome, hasContact, _, _ = prober.get_chuck_site_status(ChuckSite.Wafer)
+    if not hasContact:
+        raise Exception("A project with a defined contact height is required.")
     
     # Iterate over all wafers.
     for wafer_origin in wafer_list:
