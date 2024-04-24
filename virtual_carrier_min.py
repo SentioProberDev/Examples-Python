@@ -17,7 +17,8 @@ def main() -> None:
     prober.select_module(Module.Loader, "Loader")
 
     # SENTIO demo mode starts with a wafer on the chuck remove this wafer to the cassette 1
-    if prober.has_wafer(LoaderStation.Chuck, 1):
+    stat = prober.loader.query_wafer_status(LoaderStation.Chuck, 1)
+    if not stat is None:
         prober.loader.transfer_wafer(LoaderStation.Chuck, 1, LoaderStation.Cassette1, 13)
 
     carrier_list : List[str] = prober.loader.vc.list()
