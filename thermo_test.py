@@ -1,6 +1,8 @@
+import time
+
 from typing import List, Tuple
 from sentio_prober_control.Sentio.ProberSentio import SentioProber
-from sentio_prober_control.Sentio.Enumerations import LoaderStation, Module, RemoteCommandError, ChuckSite, AutoAlignCmd
+from sentio_prober_control.Sentio.Enumerations import *
 from sentio_prober_control.Sentio.ProberBase import ProberException
 
 
@@ -45,6 +47,29 @@ def test_wafer(prober : SentioProber) -> None:
             raise
 
 
+def set_and_wait_for_temperature(prober : SentioProber, temp : float, soak_time_sec : float) -> None:
+    prober.status.set_chuck_temp(temp)
+
+    # wait for temperature to stabilize
+    while True:
+        current_temp = prober.status.get_chuck_temp()
+        setpoint = prober.status.get_chuck_temp_setpoint()
+        if abs(current_temp - setpoint) < 0.5:
+            break
+
+        print(f"  - Waiting for temperature to reach set point: {current_temp} Setpoint: {setpoint}", end='\r')
+        time.sleep(1)
+
+    time_total = soak_time_sec
+    time_step_sec = 1
+    while time_total > 0:
+        print(f"  - Waiting Soak time: {time_total} seconds remaining", end='\r')
+        time_total -= time_step_sec
+        time.sleep(time_step_sec)
+
+    print("  - Soak time completed.")
+    
+
 def main() -> None:
     prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
 
@@ -53,52 +78,65 @@ def main() -> None:
 
     # SENTIO demo mode starts with a wafer on the chuck remove this wafer to the cassette 1
     #if prober.loader.query_wafer_status(LoaderStation.Chuck, 1) is not None:
-    #    prober.loader.transfer_wafer(LoaderStation.Chuck, 1, LoaderStation.Cassette1, 13)
+    #prober.loader.transfer_wafer(LoaderStation.Chuck, 1, LoaderStation.Cassette1, 13)
 
-    # Scan the station
+    #===> Hier Kasettenstation oder WaferWallet auswaehlen
     originStation : LoaderStation = LoaderStation.WaferWallet
     prober.loader.scan_station(originStation)
 
     # Set up a list of wafers for processing
+    #===> Hier zu testende Wafer auswaehlen
     wafer_list : List[Tuple[LoaderStation, int]] = []
     wafer_list.append((originStation, 5))
     wafer_list.append((originStation, 5))
-#    wafer_list.append((originStation, 2))
-#    wafer_list.append((originStation, 3))
-#    wafer_list.append((originStation, 4))
 #    wafer_list.append((originStation, 5))
-#    wafer_list.append((originStation, 6))
-#    wafer_list.append((originStation, 7))
-#    wafer_list.append((originStation, 8))
-#    wafer_list.append((originStation, 9))
-#    wafer_list.append((originStation, 10))
-#    wafer_list.append((originStation, 11))
-#    wafer_list.append((originStation, 12))
-#    wafer_list.append((originStation, 13))
-#    wafer_list.append((originStation, 14))
-#    wafer_list.append((originStation, 15))
+
     wafer_list = filter_nonexisting(prober, wafer_list)
 
-    restoreContactHeights : bool = True
-    prober.open_project("handling_test", restoreContactHeights)
-    hasHome, hasContact, _, _ = prober.get_chuck_site_status(ChuckSite.Wafer)
-    if not hasContact:
-        raise Exception("A project with a defined contact height is required.")
+    #===> Hier Projektnamen eingaben
+    project_name : str = "PTPAOnAxis_Test"
+    print(f"Loading project {project_name}")
+    prober.open_project(project_name)
     
-    # Iterate over all wafers.
-    for wafer_origin in wafer_list:
-        station, slot = wafer_origin
-        print(f"Processing wafer at {station} {slot}")
+     #===> Hier projekt einstellen
+    prealigner_angle = 0
+    soak_time_sec = 60
+    temperatures = [25, 40]
 
-        prober.loader.load_wafer(station, slot)
-#        prober.vision.align_wafer(AutoAlignCmd.UpdateDieSize)
-#        prober.vision.find_home()
-        resp = prober.vision.start_fast_track()
-        prober.wait_complete(resp)
+    for temp in temperatures:
+        # Iterate over all wafers.
+        for wafer_origin in wafer_list:
+            station, slot = wafer_origin
+            
+            print(f"Loading wafer from {station} {slot}")
+            prober.select_module(Module.Dashboard)
+            prober.loader.load_wafer(station, slot, prealigner_angle)
+            
+            print(f"Setting and Waiting for temperature: {temp}")
+            set_and_wait_for_temperature(prober, temp, soak_time_sec)
 
-        test_wafer(prober)
-        
-        prober.loader.unload_wafer()
+            # Here you could manually send commands to align the wafer, find home and so on. We won't do that here
+            # because we will use Fast Track instead.
+            #        prober.vision.align_wafer(AutoAlignCmd.UpdateDieSize)
+            #        prober.vision.find_home()
+    
+            # Execute Fast Track. For this to work you must have set up Fast Track in the project.
+            #   - Align Wafer
+            #   - Find Home
+            #   - Auto Focus
+            #   - and possibly additional steps
+            # Once this command is done. The wafer must be aligned, in focus and the a home position must have been set.
+            prober.select_module(Module.Vision)
+            resp = prober.vision.start_fast_track()
+            prober.wait_complete(resp)
+
+            prober.select_module(Module.Wafermap)
+            test_wafer(prober)
+            
+            prober.select_module(Module.Dashboard)
+            prober.loader.unload_wafer()
+    
+    set_and_wait_for_temperature(prober, 25, 0)
 
 
 if __name__ == "__main__":
