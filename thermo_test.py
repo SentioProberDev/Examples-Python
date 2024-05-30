@@ -78,65 +78,81 @@ def main() -> None:
 
     # SENTIO demo mode starts with a wafer on the chuck remove this wafer to the cassette 1
     #if prober.loader.query_wafer_status(LoaderStation.Chuck, 1) is not None:
-    #prober.loader.transfer_wafer(LoaderStation.Chuck, 1, LoaderStation.Cassette1, 13)
+    #    prober.loader.transfer_wafer(LoaderStation.Chuck, 1, LoaderStation.Cassette1, 13)
 
-    #===> Hier Kasettenstation oder WaferWallet auswaehlen
+    #
+    # ===> Select the type of cassette station or wafer wallet here
+    #
     originStation : LoaderStation = LoaderStation.WaferWallet
+    if prober.loader.has_station(LoaderStation.WaferWallet):
+        originStation = LoaderStation.WaferWallet
+    elif prober.loader.has_station(LoaderStation.Cassette1):
+        originStation = LoaderStation.Cassette1
+    else:
+        raise(Exception("This script requires a cassette station or a wafer wallet to execute!"))
+
     prober.loader.scan_station(originStation)
 
-    # Set up a list of wafers for processing
-    #===> Hier zu testende Wafer auswaehlen
+    #
+    # ===> Select Wafers to test here!
+    #
     wafer_list : List[Tuple[LoaderStation, int]] = []
-    wafer_list.append((originStation, 5))
-    wafer_list.append((originStation, 5))
-#    wafer_list.append((originStation, 5))
+    wafer_list.append((originStation, 1))
 
     wafer_list = filter_nonexisting(prober, wafer_list)
 
-    #===> Hier Projektnamen eingaben
+    #
+    # ===> Select the project here
+    # Project Requirementes:
+    #   - Fast Track must be set up in the project
+    #   - AutoAlign, FindHome and PTPA (if enabled) must be trained
+    #
     project_name : str = "PTPAOnAxis_Test"
     print(f"Loading project {project_name}")
     prober.open_project(project_name)
     
-     #===> Hier projekt einstellen
+    #
+    # ===> Common settings
+    #
     prealigner_angle = 0
     soak_time_sec = 60
     temperatures = [25, 40]
 
-    for temp in temperatures:
-        # Iterate over all wafers.
-        for wafer_origin in wafer_list:
-            station, slot = wafer_origin
-            
-            print(f"Loading wafer from {station} {slot}")
-            prober.select_module(Module.Dashboard)
-            prober.loader.load_wafer(station, slot, prealigner_angle)
-            
-            print(f"Setting and Waiting for temperature: {temp}")
-            set_and_wait_for_temperature(prober, temp, soak_time_sec)
+    try:
+        for temp in temperatures:
+            # Iterate over all wafers.
+            for wafer_origin in wafer_list:
+                station, slot = wafer_origin
+                
+                print(f"Loading wafer from {station} {slot}")
+                prober.select_module(Module.Dashboard)
+                prober.loader.load_wafer(station, slot, prealigner_angle)
+                
+                print(f"Setting and Waiting for temperature: {temp}")
+                set_and_wait_for_temperature(prober, temp, soak_time_sec)
 
-            # Here you could manually send commands to align the wafer, find home and so on. We won't do that here
-            # because we will use Fast Track instead.
-            #        prober.vision.align_wafer(AutoAlignCmd.UpdateDieSize)
-            #        prober.vision.find_home()
-    
-            # Execute Fast Track. For this to work you must have set up Fast Track in the project.
-            #   - Align Wafer
-            #   - Find Home
-            #   - Auto Focus
-            #   - and possibly additional steps
-            # Once this command is done. The wafer must be aligned, in focus and the a home position must have been set.
-            prober.select_module(Module.Vision)
-            resp = prober.vision.start_fast_track()
-            prober.wait_complete(resp)
+                # Here you could manually send commands to align the wafer, find home and so on. We won't do that here
+                # because we will use Fast Track instead.
+                #        prober.vision.align_wafer(AutoAlignCmd.UpdateDieSize)
+                #        prober.vision.find_home()
+        
+                # Execute Fast Track. For this to work you must have set up Fast Track in the project.
+                #   - Align Wafer
+                #   - Find Home
+                #   - Auto Focus
+                #   - and possibly additional steps
+                # Once this command is done. The wafer must be aligned, in focus and the a home position must have been set.
+                prober.select_module(Module.Vision)
+                resp = prober.vision.start_fast_track()
+                prober.wait_complete(resp)
 
-            prober.select_module(Module.Wafermap)
-            test_wafer(prober)
-            
-            prober.select_module(Module.Dashboard)
-            prober.loader.unload_wafer()
-    
-    set_and_wait_for_temperature(prober, 25, 0)
+                prober.select_module(Module.Wafermap)
+                test_wafer(prober)
+                
+                prober.select_module(Module.Dashboard)
+                prober.loader.unload_wafer()
+    finally:
+        set_and_wait_for_temperature(prober, 25, 0)
 
 
 if __name__ == "__main__":
