@@ -1,17 +1,11 @@
-from sentio_prober_control.Sentio.ProberSentio import *
-from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
-from sentio_prober_control.Communication.CommunicatorGpib import CommunicatorGpib
+from sentio_prober_control.Sentio.ProberSentio import SentioProber
+from sentio_prober_control.Sentio.Enumerations import Module, AxisOrient, ColorScheme, TestSelection, BinSelection, DieNumber
 
 
 def main():
 
     try:
-
-        #       Setup GPIB Communication
-#        prober = SentioProber(CommunicatorGpib.create(GpibCardVendor.Adlink, "GPIB0:20"))
-
-        #       Setup TCPIP Communication
-        prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
+        prober = SentioProber.create_prober("tcpip", "127.0.0.1:35555")
 
         prober.select_module(Module.Wafermap)
 
@@ -31,6 +25,14 @@ def main():
         map.bins.set_all(3, BinSelection.All)
         map.bins.load("C:\ProgramData\MPI Corporation\Sentio\config\defaults\default_bins.xbt")
 
+        # output content of the binning table
+        num_bins = map.bins.get_num_bins()
+        print(f"Number of bins in the binning table is {num_bins}")
+        for i in range(num_bins):
+            (val, des, quality, color) = map.bins.get_bin_info(i)
+            print(f"Bin {val}: {des}, {quality}, {color}")
+
+        # add and remove some dies
         for i in range(1,4):
             for j in range(1, 5):
                 map.die.remove(4+i, 4+j)

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LightData>
+  <Item Pos="Probing" Site="Wafer" Mount="Scope" Mag="X_2" Type="Coaxial" Value="95" />
+  <Item Pos="Probing" Site="Wafer" Mount="Scope" Mag="X_5" Type="Coaxial" Value="46" />
+  <Item Pos="Probing" Site="Wafer" Mount="Scope" Mag="X_10" Type="Coaxial" Value="35" />
+  <Item Pos="OffAxisCamera" Site="Wafer" Mount="Scope" Mag="X_10" Type="Coaxial" Value="36" />
+  <Item Pos="Probing" Site="ChuckCamera" Mount="Scope" Mag="X_10" Type="Coaxial" Value="1" />
+  <Item Pos="Probing" Site="AuxLeft" Mount="Scope" Mag="X_10" Type="Coaxial" Value="1023" />
+  <Item Pos="Probing" Site="Wafer" Mount="Scope2" Mag="X_10" Type="Coaxial" Value="35" />
+  <Item Pos="OffAxisCamera" Site="Wafer" Mount="Scope2" Mag="X_10" Type="Coaxial" Value="302" />
+  <Item Pos="Probing" Site="Wafer" Mount="OffAxis" Mag="X_2" Type="Coaxial" Value="7" />
+  <Item Pos="OffAxisCamera" Site="Wafer" Mount="OffAxis" Mag="X_2" Type="Coaxial" Value="7" />
+  <Item Pos="OffAxisCamera" Site="ChuckCamera" Mount="OffAxis" Mag="X_2" Type="Coaxial" Value="15" />
+  <Item Pos="OffAxisCamera" Site="Wafer" Mount="Chuck" Mag="X_2" Type="Coaxial" Value="505" />
+  <Item Pos="Probing" Site="Wafer" Mount="Chuck" Mag="X_2" Type="Coaxial" Value="28" />
+  <Item Pos="OffAxisCamera" Site="ChuckCamera" Mount="Chuck" Mag="X_2" Type="Coaxial" Value="1" />
+  <Item Pos="Probing" Site="ChuckCamera" Mount="Chuck" Mag="X_2" Type="Coaxial" Value="47" />
+  <Item Pos="OffAxisCamera" Site="Wafer" Mount="Chuck" Mag="X_2" Type="Ring" Value="61" />
+  <Item Pos="Probing" Site="Wafer" Mount="Chuck" Mag="X_2" Type="Ring" Value="1" />
+  <Item Pos="OffAxisCamera" Site="ChuckCamera" Mount="Chuck" Mag="X_2" Type="Ring" Value="1" />
+  <Item Pos="Probing" Site="ChuckCamera" Mount="Chuck" Mag="X_2" Type="Ring" Value="1" />
+  <Item Pos="Probing" Site="Wafer" Mount="VCE01" Mag="X_2" Type="Coaxial" Value="282" />
+  <Item Pos="Probing" Site="Wafer" Mount="Scope2" Mag="X_5" Type="Coaxial" Value="46" />
+</LightData>

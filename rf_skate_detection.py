@@ -1,10 +1,8 @@
 from sentio_prober_control.Sentio.ProberSentio import *
 from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
-import threading
+from sentio_prober_control.Sentio.Enumerations import DieNumber, ChuckSite
 
 import datetime
-import time
-import csv
 
 _prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
 _test_dies_seq = [400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412]

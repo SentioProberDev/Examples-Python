@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wafermap>
+    <Meta>
+        <SentioVersion>23.0.6.1482 (Release)</SentioVersion>
+        <SentioBuildDate>01/22/2024 (RELEASE)</SentioBuildDate>
+        <CreationData>2024-04-16T17:02:41Z</CreationData>
+    </Meta>
+    <Properties Type="WafermapPropertiesRound" GridOriginIsWaferCenter="True" MapFeatures="23">
+        <Diameter>200000</Diameter>
+        <FlatAngle>0</FlatAngle>
+        <FlatLength>50000</FlatLength>
+        <NotchDepth>3000</NotchDepth>
+        <WaferOrientationMarkerType>Notch</WaferOrientationMarkerType>
+        <IndexSize>21868.138,21848.906</IndexSize>
+        <DieMapMode>GoodUglyEdge</DieMapMode>
+        <SubSiteMapMode>GoodUglyNotPresent</SubSiteMapMode>
+        <StreetSize>0,0</StreetSize>
+        <GridOrientation>UpRight</GridOrientation>
+        <GridOffsetRel>0,0</GridOffsetRel>
+        <GridOffset>0,0</GridOffset>
+        <GridOrigin>0,0</GridOrigin>
+        <GridHome>-2,3</GridHome>
+        <DieReference>0,0</DieReference>
+        <DieReferenceOrigin>Center</DieReferenceOrigin>
+        <DieReferenceIsSet>False</DieReferenceIsSet>
+        <EdgeArea>2000</EdgeArea>
+        <RowOffset>0</RowOffset>
+        <RoutingStartPoint>UpperLeft</RoutingStartPoint>
+        <RoutingPriority>RowBiDir</RoutingPriority>
+    </Properties>
+    <TestSites>
+        <TestSite ID="site_1" Enabled="True" Pos="0.0,0.0" />
+    </TestSites>
+    <Dies>
+        <Die Cell="-3,-5" Routable="False" />
+        <Die Cell="-2,-5" Routable="False" />
+        <Die Cell="-1,-5" Routable="False" />
+        <Die Cell="0,-5" Routable="False" />
+        <Die Cell="1,-5" Routable="False" />
+        <Die Cell="2,-5" Routable="False" />
+        <Die Cell="-4,-4" Routable="False" />
+        <Die Cell="-3,-4" Routable="False" />
+        <Die Cell="-2,-4" Routable="False" />
+        <Die Cell="-1,-4" Routable="False" />
+        <Die Cell="0,-4" Routable="False" />
+        <Die Cell="1,-4" Routable="True" />
+        <Die Cell="2,-4" Routable="False" />
+        <Die Cell="3,-4" Routable="False" />
+        <Die Cell="-5,-3" Routable="False" />
+        <Die Cell="-4,-3" Routable="False" />
+        <Die Cell="-3,-3" Routable="False" />
+        <Die Cell="-2,-3" Routable="False" />
+        <Die Cell="-1,-3" Routable="False" />
+        <Die Cell="0,-3" Routable="False" />
+        <Die Cell="1,-3" Routable="False" />
+        <Die Cell="2,-3" Routable="False" />
+        <Die Cell="3,-3" Routable="False" />
+        <Die Cell="4,-3" Routable="False" />
+        <Die Cell="-5,-2" Routable="False" />
+        <Die Cell="-4,-2" Routable="False" />
+        <Die Cell="-3,-2" Routable="False" />
+        <Die Cell="-2,-2" Routable="False" />
+        <Die Cell="-1,-2" Routable="False" />
+        <Die Cell="0,-2" Routable="False" />
+        <Die Cell="1,-2" Routable="False" />
+        <Die Cell="2,-2" Routable="False" />
+        <Die Cell="3,-2" Routable="False" />
+        <Die Cell="4,-2" Routable="False" />
+        <Die Cell="-5,-1" Routable="False" />
+        <Die Cell="-4,-1" Routable="True" />
+        <Die Cell="-3,-1" Routable="False" />
+        <Die Cell="-2,-1" Routable="False" />
+        <Die Cell="-1,-1" Routable="False" />
+        <Die Cell="0,-1" Routable="False" />
+        <Die Cell="1,-1" Routable="False" />
+        <Die Cell="2,-1" Routable="False" />
+        <Die Cell="3,-1" Routable="False" />
+        <Die Cell="4,-1" Routable="False" />
+        <Die Cell="-5,0" Routable="False" />
+        <Die Cell="-4,0" Routable="False" />
+        <Die Cell="-3,0" Routable="False" />
+        <Die Cell="-2,0" Routable="False" />
+        <Die Cell="-1,0" Routable="False" />
+        <Die Cell="0,0" Routable="False" />
+        <Die Cell="1,0" Routable="False" />
+        <Die Cell="2,0" Routable="False" />
+        <Die Cell="3,0" Routable="False" />
+        <Die Cell="4,0" Routable="False" />
+        <Die Cell="-5,1" Routable="False" />
+        <Die Cell="-4,1" Routable="False" />
+        <Die Cell="-3,1" Routable="False" />
+        <Die Cell="-2,1" Routable="False" />
+        <Die Cell="-1,1" Routable="False" />
+        <Die Cell="0,1" Routable="False" />
+        <Die Cell="1,1" Routable="False" />
+        <Die Cell="2,1" Routable="False" />
+        <Die Cell="3,1" Routable="True" />
+        <Die Cell="4,1" Routable="False" />
+        <Die Cell="-5,2" Routable="False" />
+        <Die Cell="-4,2" Routable="False" />
+        <Die Cell="-3,2" Routable="False" />
+        <Die Cell="-2,2" Routable="False" />
+        <Die Cell="-1,2" Routable="False" />
+        <Die Cell="0,2" Routable="False" />
+        <Die Cell="1,2" Routable="False" />
+        <Die Cell="2,2" Routable="False" />
+        <Die Cell="3,2" Routable="False" />
+        <Die Cell="4,2" Routable="False" />
+        <Die Cell="-4,3" Routable="False" />
+        <Die Cell="-3,3" Routable="False" />
+        <Die Cell="-2,3" Routable="True" />
+        <Die Cell="-1,3" Routable="False" />
+        <Die Cell="0,3" Routable="False" />
+        <Die Cell="1,3" Routable="False" />
+        <Die Cell="2,3" Routable="False" />
+        <Die Cell="3,3" Routable="False" />
+        <Die Cell="-3,4" Routable="False" />
+        <Die Cell="-2,4" Routable="False" />
+        <Die Cell="-1,4" Routable="False" />
+        <Die Cell="0,4" Routable="False" />
+        <Die Cell="1,4" Routable="False" />
+        <Die Cell="2,4" Routable="False" />
+    </Dies>
+    <PoiLists>
+        <PoiList PoiReference="StageCenter" Stage="Chuck" />
+    </PoiLists>
+</Wafermap>

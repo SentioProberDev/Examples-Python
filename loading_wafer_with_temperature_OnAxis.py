@@ -1,6 +1,6 @@
 from sentio_prober_control.Sentio.ProberSentio import *
 from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
-import threading
+from sentio_prober_control.Sentio.Enumerations import *
 
 import datetime
 import time
@@ -112,7 +112,7 @@ def wafer_pre_setting(is_move_chuck = False, is_execute_find_tips = False ):
     _prober.vision.find_home()
 
     if is_execute_find_tips :
-        _tip_offset[0], _tip_offset[1], _tip_offset[2] = _prober.vision.ptpa_find_tips(PTPA_Find_Tips_Mode.OnAxis)
+        _tip_offset[0], _tip_offset[1], _tip_offset[2] = _prober.vision.ptpa_find_tips(PtpaFindTipsMode.OnAxis)
 
 
 def chang_to_target_temperature(target_temperature):

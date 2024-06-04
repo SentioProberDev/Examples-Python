@@ -1,15 +1,11 @@
-from sentio_prober_control.Communication.CommunicatorGpib import CommunicatorGpib
-from sentio_prober_control.Sentio.ProberSentio import *
+from sentio_prober_control.Sentio.ProberSentio import SentioProber
+from sentio_prober_control.Sentio.Enumerations import CameraMountPoint
 from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
 
 
 def main():
 
     try:
-        #       Setup GPIB Communication
-#        prober = SentioProber(CommunicatorGpib.create(GpibCardVendor.Adlink, "GPIB0:20"))
-
-        #       Setup TCPIP Communication
         prober = SentioProber(CommunicatorTcpIp.create("127.0.0.1:35555"))
 
         prober.vision.camera.set_light(CameraMountPoint.Scope, 200)

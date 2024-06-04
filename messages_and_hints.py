@@ -1,6 +1,7 @@
 import time
 
 from sentio_prober_control.Sentio.ProberSentio import *
+from sentio_prober_control.Sentio.Enumerations import RemoteCommandError
 from sentio_prober_control.Communication.CommunicatorTcpIp import CommunicatorTcpIp
 
 
@@ -32,8 +33,4 @@ def main():
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        print("\n#### Error ##################################")
-        print(f"{e}")
+    main()
