@@ -6,6 +6,9 @@ SentioProberControlSamples .svg?maxAge=360)](https://github.com/beltoforion/Magn
 -->
 # SentioProberControl - Samples
 
+This archive contains python sample code for remotely controlling a MPI Probe Station running the MPI SENTIO Software Suite.
+In order to use the code you need a physical probe station or an Installation of the SENTIO control software running in demo mode on a local PC.
+
 ## Prerequisites
 
 * To use this examples you need a Version of the [SENTIO Probe Station Control software](https://www.mpi-corporation.com/ast/engineering-probe-systems/mpi-sentio-software-suite/). You can run the software either in demo mode or in combination with a real probe station.
