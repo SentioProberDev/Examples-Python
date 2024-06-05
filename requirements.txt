@@ -1,1 +1,1 @@
-sentio-prober-control >= 23.0.1
+sentio-prober-control >= 24.0.0
