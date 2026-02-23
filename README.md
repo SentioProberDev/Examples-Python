@@ -23,16 +23,16 @@ In order to use the code you need a physical probe station or an Installation of
 ## Table of Contents
 
 ### [map_setup.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_setup.py)
-Set up a round wafermap remotely
+Set up a round wafermap remotely.
 
 ### [map_setup_rect.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_setup_rect.py)
-Set up a recangular wafermap remotely
+Set up a rectangular wafermap remotely.
 
 ### [map_stepping.py](https://github.com/SentioProberDev/SentioProberControlSamples/blob/master/map_stepping.py)
-This example demonstrates basic stepping over a wafermap without subsites
+This example demonstrates basic stepping over a wafermap without subsites.
 
 ### [commands_direct_send.py](https://github.com/SentioProberDev/Examples-Python/blob/master/commands_direct_send.py)
-Direct sending of low level remote commands via TCP/IP or GPIB (ADLINK)
+Direct sending of low level remote commands via TCP/IP or GPIB (ADLINK).
 
 ### [vision_camera_settings.py](https://github.com/SentioProberDev/Examples-Python/blob/master/vision_camera_settings.py)
 This script shows how to set and change basic camera parameters.
